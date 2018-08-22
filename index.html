@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Club7 - Most relaxing and mindless pen & paper game ever</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+
+    <style>
+     @page { size: A4; }
+     body  { font-family: 'Courier New'; }
+    </style>
+  </head>
+
+  <!-- Set "A5", "A4" or "A3" for class name -->
+  <!-- Set also "landscape" if you need -->
+  <body class="A4">
+
+    <!-- Each sheet element should have the class "sheet" -->
+    <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+    <section class="sheet padding-10mm">
+
+      <!-- Write HTML just like a web page -->
+      <article id="space">This is an A4 document.</article><br />
+      <article id="info">There are <span id='counter'></span> seven(s).</article>
+
+    </section>
+
+    <script>
+     const cols = 74;
+     const rows = 57;
+
+     var alphabet = '123456~890ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$!%^&*(){}[];`,.';
+     alphabet = alphabet + alphabet + "7"
+     
+     var text = '';
+     var char = '';
+     var rnum = 0;
+     var counter = 0;
+     
+     for (var r=0; r<rows; r++) {
+       for (var c=0; c<cols; c++) {
+	 rnum = Math.floor(Math.random() * alphabet.length);
+	 char = alphabet.substring(rnum,rnum+1);
+	 text += char;
+
+	 if (char == '7') {
+	   counter++;
+	 }
+       }
+       text += '\n';
+     }
+     
+     document.getElementById('space').innerText = text;
+     document.getElementById('counter').innerText = counter;
+    </script>
+  </body>
+
+</html>
